@@ -4,7 +4,8 @@ Brace yourself, for I shall wield the full force of my powers to safeguard this 
 
 ## Features
 
-- [ ] Server Logging
+- [ ] Server Logging (user join/leave, message create/delete/edit, user reacted, thread created, channel created/deleted, role created/deleted/edited, role given/removed)
+
 - [ ] Word Filtering
 - [ ] Moderation Commands Such As Ban/Mute/Purge/Kick
 - [ ] Welcome/Leave Messages

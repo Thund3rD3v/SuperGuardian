@@ -14,7 +14,6 @@ func main() {
 		panic("Error while loading .env file," + err.Error())
 	}
 
-	botToken := os.Getenv("BOT_TOKEN")
-
-	bot.Initlize(botToken)
+	// Initialize The Bot
+	bot.Initlize(os.Getenv("BOT_TOKEN"))
 }

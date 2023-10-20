@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/Thund3rD3v/SuperGuardian/logger"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -18,9 +19,10 @@ func Initlize(token string) {
 
 	// Add event listeners
 	client.AddHandler(messageCreate)
+	client.AddHandler(guildMemberAdd)
 
 	// Add required Intents
-	client.Identify.Intents = discordgo.IntentGuildMessages
+	client.Identify.Intents = discordgo.IntentGuildMessages | discordgo.IntentGuildMembers
 
 	// Open a websocket connection to Discord and begin listening.
 	err = client.Open()
@@ -80,4 +82,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 				"Did you disable DM in your privacy settings?",
 		)
 	}
+}
+
+func guildMemberAdd(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
+	logger.LogMebmerAdd(s, m)
 }
