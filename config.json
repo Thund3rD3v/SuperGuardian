@@ -1,5 +1,1 @@
-{
-  "logging": {
-    "channelId": "1164727504540536923"
-  }
-}
+{"guildId":"1164710305209798666","ownerId":"698172074522312714","Colors":{"main":28654,"success":1558884,"error":15929952,"warning":16098596},"Greetings":{"enabled":true,"message":"👋 Welcome to the server, ${tag} 🎉 ","channelId":"1164710305742467124"}}

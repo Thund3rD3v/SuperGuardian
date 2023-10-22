@@ -1,0 +1,2 @@
+Greetings
+- ${tag} => ping the user that just joined
