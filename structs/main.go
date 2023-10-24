@@ -14,11 +14,18 @@ type Config struct {
 		Success int `json:"success"`
 		Error   int `json:"error"`
 		Warning int `json:"warning"`
-	}
+	} `json:"colors"`
+
 	Greetings struct {
 		Enabled   bool   `json:"enabled"`
 		Message   string `json:"message"`
 		ChannelId string `json:"channelId"`
+	} `json:"greetings"`
+
+	JoinRoles struct {
+		Enabled     bool     `json:"enabled"`
+		IncludeBots bool     `json:"includeBots"`
+		Roles       []string `json:"roles"`
 	}
 }
 

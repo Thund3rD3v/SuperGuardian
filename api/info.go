@@ -40,3 +40,24 @@ func ChannelsRoute(session *discordgo.Session) fiber.Handler {
 		})
 	}
 }
+
+func RolesRoute(session *discordgo.Session) fiber.Handler {
+	return func(ctx *fiber.Ctx) error {
+		config := utils.GetConfig()
+
+		roles, err := session.GuildRoles(config.GuildId)
+		if err != nil {
+			return ctx.JSON(structs.Response{
+				Success: false,
+				Message: "Could Not Retrieve Roles",
+			})
+		}
+
+		return ctx.JSON(structs.Response{
+			Success: true,
+			Data: structs.AnyData{
+				"roles": roles,
+			},
+		})
+	}
+}

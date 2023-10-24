@@ -12,6 +12,7 @@ func Start(session *discordgo.Session, password string) {
 
 	// Add event listeners
 	session.AddHandler(SendGreetings)
+	session.AddHandler(JoinRoles)
 
 	// Add required Intents
 	session.Identify.Intents = discordgo.IntentsAll
@@ -33,7 +34,7 @@ func Start(session *discordgo.Session, password string) {
 	embed := discordgo.MessageEmbed{
 		Title:       fmt.Sprintf("%v Dashboard", session.State.User.Username),
 		Color:       config.Colors.Main,
-		Description: fmt.Sprintf("Your %v password is ``%v``", session.State.User.Username, password),
+		Description: fmt.Sprintf("Your %v password is ```%v```", session.State.User.Username, password),
 		Timestamp:   time.Now().Format(time.RFC3339),
 	}
 

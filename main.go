@@ -20,7 +20,7 @@ func main() {
 	}
 
 	// Generate Password
-	password := utils.GeneratePassword(16)
+	password := utils.GeneratePassword(64)
 
 	// Create a new Discord sesson
 	session, err := discordgo.New("Bot " + os.Getenv("BOT_TOKEN"))

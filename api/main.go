@@ -13,8 +13,9 @@ const Port = 3000
 
 func Start(session *discordgo.Session, password string) {
 	app := fiber.New(fiber.Config{
-		JSONEncoder: json.Marshal,
-		JSONDecoder: json.Unmarshal,
+		JSONEncoder:           json.Marshal,
+		JSONDecoder:           json.Unmarshal,
+		DisableStartupMessage: true,
 	})
 
 	app.Use(cors.New(cors.Config{
@@ -28,11 +29,16 @@ func Start(session *discordgo.Session, password string) {
 
 	app.Get("/info", InfoRoute(session))
 	app.Get("/info/channels", ValidatePasswordMiddleware(password), ChannelsRoute(session))
+	app.Get("/info/roles", ValidatePasswordMiddleware(password), RolesRoute(session))
 
 	app.Get("/greetings/info", ValidatePasswordMiddleware(password), GreetingsRoute(session))
 	app.Patch("/greetings/edit", ValidatePasswordMiddleware(password), EditGreetingsRoute(session))
 
-	fmt.Printf("Server Available At http://localhost:%v", Port)
+	app.Get("/join-roles/info", ValidatePasswordMiddleware(password), JoinRolesRoute(session))
+	app.Patch("/join-roles/edit", ValidatePasswordMiddleware(password), EditJoinRolesRoute(session))
+
+	fmt.Printf("Server Available At http://localhost:%v\n", Port)
+	fmt.Println("Dashboard Password:", password)
 
 	app.Listen(fmt.Sprintf("127.0.0.1:%v", Port))
 }

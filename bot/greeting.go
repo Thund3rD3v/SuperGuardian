@@ -13,7 +13,7 @@ func SendGreetings(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 	// Get Config
 	config := utils.GetConfig()
 
-	// Check If Logging Is Enabled
+	// Check If Greetings Is Enabled
 	if config.Greetings.Enabled {
 		memberCount := utils.GetGuildMemberCount(s, m.GuildID)
 
@@ -29,7 +29,7 @@ func SendGreetings(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 		// Send Embed
 		_, err := s.ChannelMessageSendEmbed(config.Greetings.ChannelId, &embed)
 		if err != nil {
-			fmt.Println("Error logging member add," + err.Error())
+			fmt.Println("Error greeting member," + err.Error())
 			return
 		}
 	}

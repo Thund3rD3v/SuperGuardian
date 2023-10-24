@@ -9,31 +9,31 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type EditGreetingsBody struct {
-	Enabled   bool   `json:"enabled"`
-	Message   string `json:"message"`
-	ChannelId string `json:"channelId"`
+type EditJoinRolesBody struct {
+	Enabled     bool     `json:"enabled"`
+	IncludeBots bool     `json:"includeBots"`
+	Roles       []string `json:"roles"`
 }
 
-func GreetingsRoute(session *discordgo.Session) fiber.Handler {
+func JoinRolesRoute(session *discordgo.Session) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		config := utils.GetConfig()
 
 		return ctx.JSON(structs.Response{
 			Success: true,
 			Data: structs.AnyData{
-				"enabled":   config.Greetings.Enabled,
-				"message":   config.Greetings.Message,
-				"channelId": config.Greetings.ChannelId,
+				"enabled":     config.JoinRoles.Enabled,
+				"includeBots": config.JoinRoles.IncludeBots,
+				"roles":       config.JoinRoles.Roles,
 			},
 		})
 	}
 }
 
-func EditGreetingsRoute(session *discordgo.Session) fiber.Handler {
+func EditJoinRolesRoute(session *discordgo.Session) fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		// Parse Json Body
-		var body EditGreetingsBody
+		var body EditJoinRolesBody
 		raw := ctx.Request().Body()
 		err := json.Unmarshal(raw, &body)
 		if err != nil {
@@ -45,21 +45,21 @@ func EditGreetingsRoute(session *discordgo.Session) fiber.Handler {
 
 		config := utils.GetConfig()
 
-		config.Greetings.Enabled = body.Enabled
-		config.Greetings.Message = body.Message
-		config.Greetings.ChannelId = body.ChannelId
+		config.JoinRoles.Enabled = body.Enabled
+		config.JoinRoles.IncludeBots = body.IncludeBots
+		config.JoinRoles.Roles = body.Roles
 
 		err = utils.WriteConfig(config)
 		if err != nil {
 			return ctx.JSON(structs.Response{
 				Success: false,
-				Message: "Could Not Save New Greetings",
+				Message: "Could Not Save Join Roles",
 			})
 		}
 
 		return ctx.JSON(structs.Response{
 			Success: true,
-			Message: "Saved Greetings!",
+			Message: "Saved Join Roles!",
 		})
 	}
 }
