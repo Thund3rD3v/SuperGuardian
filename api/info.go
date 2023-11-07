@@ -78,7 +78,8 @@ func LeaderboardRoute(db *gorm.DB, session *discordgo.Session) fiber.Handler {
 			})
 		}
 
-		members, err := database.GetMemberByCursor(db, cursor, 10)
+		// Cursor -1 so starting index is 1 instead of 0
+		members, err := database.GetMemberByCursor(db, cursor-1, 8)
 		if err != nil {
 			fmt.Println("Error While Getting Members: ", err)
 			return ctx.JSON(structs.Response{
@@ -108,10 +109,13 @@ func LeaderboardRoute(db *gorm.DB, session *discordgo.Session) fiber.Handler {
 			})
 		}
 
+		membersCount := database.GetMembersCount(db)
+
 		return ctx.JSON(structs.Response{
 			Success: true,
 			Data: structs.AnyData{
 				"members": newMembers,
+				"count":   membersCount,
 			},
 		})
 	}

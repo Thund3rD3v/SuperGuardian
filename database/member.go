@@ -33,11 +33,17 @@ func GetMember(db *gorm.DB, id string) (structs.Member, error) {
 func GetMemberByCursor(db *gorm.DB, cursor int, amount int) ([]structs.Member, error) {
 	var members []structs.Member
 
-	if err := db.Where("id > ?", cursor).Limit(amount).Find(&members).Error; err != nil {
+	if err := db.Offset(cursor).Order("level DESC").Limit(amount).Find(&members).Error; err != nil {
 		return nil, err
 	}
 
 	return members, nil
+}
+
+func GetMembersCount(db *gorm.DB) int64 {
+	var count int64
+	db.Model(structs.Member{}).Count(&count)
+	return count
 }
 
 func CreateMember(db *gorm.DB, id string, level int, xp int) error {
