@@ -17,7 +17,7 @@ func JoinRoles(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 			// Add that role to user
 			err := s.GuildMemberRoleAdd(config.GuildId, m.User.ID, config.JoinRoles.Roles[i])
 			if err != nil {
-				fmt.Println(fmt.Sprintf("Error adding role '%v' to member,", config.JoinRoles.Roles[i]), err.Error())
+				fmt.Println(fmt.Sprintf("Error Adding Role '%v' To Member: ", config.JoinRoles.Roles[i]), err.Error())
 			}
 		}
 	}

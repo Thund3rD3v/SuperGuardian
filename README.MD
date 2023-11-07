@@ -9,5 +9,6 @@ Brace yourself, for I shall wield the full force of my powers to safeguard this 
 - [x] Join Roles
 - [ ] Word Filtering
 - [ ] Moderation Commands Such As Ban/Mute/Purge/Kick
-- [ ] Embed Sender
-- [ ] Levels System
+- [x] Embed Sender
+- [x] Levels System
+- [ ] Performance Monitoring

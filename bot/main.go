@@ -6,13 +6,15 @@ import (
 
 	"github.com/Thund3rD3v/SuperGuardian/utils"
 	"github.com/bwmarrin/discordgo"
+	"gorm.io/gorm"
 )
 
-func Start(session *discordgo.Session, password string) {
+func Start(session *discordgo.Session, db *gorm.DB, password string) {
 
 	// Add event listeners
 	session.AddHandler(SendGreetings)
 	session.AddHandler(JoinRoles)
+	session.AddHandler(Levels(db))
 
 	// Add required Intents
 	session.Identify.Intents = discordgo.IntentsAll
@@ -20,7 +22,7 @@ func Start(session *discordgo.Session, password string) {
 	// Open a websocket connection to Discord and begin listening.
 	err := session.Open()
 	if err != nil {
-		panic("Error while opening connection with discord session," + err.Error())
+		panic("Error While Opening Connection With Discord Session: " + err.Error())
 	}
 
 	// Once Ready Send Owner The Password
@@ -28,7 +30,7 @@ func Start(session *discordgo.Session, password string) {
 
 	channel, err := session.UserChannelCreate(config.OwnerId)
 	if err != nil {
-		fmt.Println("Error while sending password to owner,", err.Error())
+		fmt.Println("Error While Sending Password To Owner: ", err.Error())
 	}
 
 	embed := discordgo.MessageEmbed{
@@ -40,7 +42,7 @@ func Start(session *discordgo.Session, password string) {
 
 	_, err = session.ChannelMessageSendEmbed(channel.ID, &embed)
 	if err != nil {
-		fmt.Println("Error while sending password to owner,", err.Error())
+		fmt.Println("Error While Sending Password To Owner: ", err.Error())
 	}
 
 	fmt.Println("Bot is now running. Press CTRL-C to exit.")

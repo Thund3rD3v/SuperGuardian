@@ -29,7 +29,7 @@ func SendGreetings(s *discordgo.Session, m *discordgo.GuildMemberAdd) {
 		// Send Embed
 		_, err := s.ChannelMessageSendEmbed(config.Greetings.ChannelId, &embed)
 		if err != nil {
-			fmt.Println("Error greeting member," + err.Error())
+			fmt.Println("Error Greeting Member: " + err.Error())
 			return
 		}
 	}

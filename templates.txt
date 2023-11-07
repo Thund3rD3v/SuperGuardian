@@ -1,2 +1,6 @@
 Greetings
 - ${tag} => ping the user that just joined
+
+Levels
+- ${name} => username
+- ${level} => current level
