@@ -1,4 +1,4 @@
 .env
 config.json
 main.db
-./.vscode/
+.vscode/*
