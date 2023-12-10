@@ -1,6 +1,8 @@
 # SuperGuardian
 
-Brace yourself, for I shall wield the full force of my powers to safeguard this realm! As the server's protector, I vow to stand as an unwavering sentinel, tirelessly watching over this domain. No harm shall befall it under my watchful eye, and no disturbance shall go unchecked. I am the shield that guards the gates of this digital sanctuary, and with unwavering dedication I shale use all my might
+SuperGuardian, the open-source Discord bot, pledges to be the unwavering protector of your server, utilizing its full might to shield against harm and disturbances. As the digital sentinel, it stands vigilant, ensuring the safety and tranquility of your digital sanctuary.
+
+**Note - This Project Is Just For Fun!**
 
 ## Features
 
