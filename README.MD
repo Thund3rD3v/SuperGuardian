@@ -9,7 +9,7 @@ SuperGuardian, the open-source Discord bot, pledges to be the unwavering protect
 - [ ] Rate Limiting
 - [x] Welcome Messages
 - [x] Join Roles
-- [ ] Word Filtering
+- [ ] ContentFiltering
 - [ ] Moderation Commands Such As Ban/Mute/Purge/Kick
 - [x] Embed Sender
 - [x] Levels System

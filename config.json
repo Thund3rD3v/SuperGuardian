@@ -12,12 +12,12 @@
     "message": "👋 Welcome to the server, ${tag} 🎉",
     "channelId": "1164710305742467124"
   },
-  "JoinRoles": {
+  "joinRoles": {
     "enabled": true,
     "includeBots": false,
     "roles": ["1165780628495667270"]
   },
-  "Levels": {
+  "levels": {
     "enabled": true,
     "channelId": "1164710305742467124",
     "message": "Congratulations, ${name}! You've successfully reached **level ${level}**. Keep up the excellent work! 🎉",
@@ -26,5 +26,10 @@
     "maxXp": 10,
     "baseXp": 25,
     "xpMultiplier": 25
+  },
+  "contentFiltering": {
+    "enabled": true,
+    "profanityChecker": true,
+    "blacklist": [""]
   }
 }

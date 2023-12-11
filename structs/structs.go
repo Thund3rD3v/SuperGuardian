@@ -28,7 +28,7 @@ type Config struct {
 		Enabled     bool     `json:"enabled"`
 		IncludeBots bool     `json:"includeBots"`
 		Roles       []string `json:"roles"`
-	}
+	} `json:"joinRoles"`
 
 	Levels struct {
 		Enabled      bool   `json:"enabled"`
@@ -39,7 +39,13 @@ type Config struct {
 		MaxXp        int    `json:"maxXp"`
 		BaseXp       int    `json:"baseXp"`
 		XpMultiplier int    `json:"xpMultiplier"`
-	}
+	} `json:"levels"`
+
+	ContentFiltering struct {
+		Enabled          bool     `json:"enabled"`
+		ProfanityChecker bool     `json:"profanityChecker"`
+		BlackList        []string `json:"blacklist"`
+	} `json:"contentFiltering"`
 }
 
 type Response struct {
