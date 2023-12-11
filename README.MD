@@ -6,7 +6,7 @@ SuperGuardian, the open-source Discord bot, pledges to be the unwavering protect
 
 ## Installation
 
-1. (Download Golang)[https://go.dev/]
+1. [Download Golang](https://go.dev/)
 2. Configure .env with discord bot token
 3. configure example.config.json with your servers configuration and rename the file to config.json
 4. Build server with
