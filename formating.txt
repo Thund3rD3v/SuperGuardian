@@ -1,0 +1,15 @@
+User
+- {user.id} => user id
+- {user.name} => user name
+- {user.mention} => mentions the user
+- {user.avatar} => avatar url
+
+Guild
+- {guild.id} => guild id
+- {guild.name} => guild name
+- {guild.icon} => guild icon
+- {guild.banner} => guild banner image url
+- {guild.members} => guild members amount
+
+Other
+- {verification.link} => url for server verification

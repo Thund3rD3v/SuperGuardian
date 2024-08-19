@@ -3,6 +3,8 @@
 {
   "guildId": "1164710305209798666",
   "ownerId": "698172074522312714",
+  "port": 3000,
+  "dashboardUrl": "http://localhost:5173",
   "colors": {
     "main": 28654,
     "success": 1558884,
@@ -11,22 +13,45 @@
   },
   "greetings": {
     "enabled": true,
-    "message": "👋 Welcome to the server, ${tag} 🎉",
+    "title": "🤝 Welcome {name}",
+    "message": "Let's roll out the red carpet for {tag}! Your presence enriches us all. {guild.members}",
     "channelId": "1164710305742467124"
   },
   "joinRoles": {
     "enabled": true,
     "includeBots": false,
-    "roles": ["1165780628495667270"]
+    "roles": ["1165780628495667270", "1213854563287826515"]
   },
   "levels": {
     "enabled": true,
     "channelId": "1164710305742467124",
-    "message": "Congratulations, ${name}! You've successfully reached **level ${level}**. Keep up the excellent work! 🎉",
+    "title": "{name}, Has Advanced To Level {level}",
+    "message": "Congratulations, {name}! You've successfully reached **level {level}**. Keep up the excellent work! 🎉",
     "coolDown": 5,
     "minXp": 1,
     "maxXp": 10,
     "baseXp": 25,
     "xpMultiplier": 25
+  },
+  "verification": {
+    "enabled": true,
+    "embeds": {
+      "main": {
+        "title": "📝 Start Your Verification",
+        "message": "Kick off your verification by clicking the button below 🖱️. Ready to access all the server has to offer? Let's dive in! 🚀"
+      },
+      "confirmation": {
+        "title": "✅ Complete Your Verification In {guild.name}",
+        "message": "Just one more step! Confirm your server access by visiting this link: {verification.link}. Almost there! 🎉"
+      }
+    },
+    "verifiedText": "You have been verified! You may now close this tab and return back to discord.",
+    "channelId": "1275097675490000906",
+    "roles": ["1213854563287826515"]
+  },
+  "contentFiltering": {
+    "enabled": true,
+    "profanityChecker": true,
+    "blacklist": [""]
   }
 }

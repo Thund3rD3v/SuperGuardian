@@ -1,8 +1,6 @@
 # SuperGuardian
 
-SuperGuardian, the open-source Discord bot, pledges to be the unwavering protector of your server, utilizing its full might to shield against harm and disturbances. As the digital sentinel, it stands vigilant, ensuring the safety and tranquility of your digital sanctuary.
-
-**Note - This Project Is Just For Fun!**
+Meet SuperGuardian, your server's ultimate protector! I'm here to guard our digital domain with unyielding vigilance, ensuring no harm or disturbance disrupts our peace. As the shield of this sanctuary, I pledge to use my powers to keep our realm safe and sound. Ready to stand firm and make server management a breeze!
 
 ## Installation
 
@@ -23,3 +21,8 @@ SuperGuardian, the open-source Discord bot, pledges to be the unwavering protect
 - [x] Embed Sender
 - [x] Levels System
 - [ ] Performance Monitoring
+- [x] Hcaptcha Verification
+- [ ] Tickets
+- [ ] Themes
+- [ ] Custom Logger
+- [ ] IP Whitelist

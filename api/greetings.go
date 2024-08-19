@@ -5,17 +5,17 @@ import (
 
 	"github.com/Thund3rD3v/SuperGuardian/structs"
 	"github.com/Thund3rD3v/SuperGuardian/utils"
-	"github.com/bwmarrin/discordgo"
 	"github.com/gofiber/fiber/v2"
 )
 
 type EditGreetingsBody struct {
 	Enabled   bool   `json:"enabled"`
+	Title     string `json:"title"`
 	Message   string `json:"message"`
 	ChannelId string `json:"channelId"`
 }
 
-func GreetingsRoute(session *discordgo.Session) fiber.Handler {
+func GreetingsRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		config := utils.GetConfig()
 
@@ -23,6 +23,7 @@ func GreetingsRoute(session *discordgo.Session) fiber.Handler {
 			Success: true,
 			Data: structs.AnyData{
 				"enabled":   config.Greetings.Enabled,
+				"title":     config.Greetings.Title,
 				"message":   config.Greetings.Message,
 				"channelId": config.Greetings.ChannelId,
 			},
@@ -30,7 +31,7 @@ func GreetingsRoute(session *discordgo.Session) fiber.Handler {
 	}
 }
 
-func EditGreetingsRoute(session *discordgo.Session) fiber.Handler {
+func EditGreetingsRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		// Parse Json Body
 		var body EditGreetingsBody
@@ -46,6 +47,7 @@ func EditGreetingsRoute(session *discordgo.Session) fiber.Handler {
 		config := utils.GetConfig()
 
 		config.Greetings.Enabled = body.Enabled
+		config.Greetings.Title = body.Title
 		config.Greetings.Message = body.Message
 		config.Greetings.ChannelId = body.ChannelId
 

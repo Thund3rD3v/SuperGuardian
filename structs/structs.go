@@ -11,6 +11,9 @@ type Config struct {
 	GuildId string `json:"guildId"`
 	OwnerId string `json:"ownerId"`
 
+	Port         int    `json:"port"`
+	DashboardUrl string `json:"dashboardUrl"`
+
 	Colors struct {
 		Main    int `json:"main"`
 		Success int `json:"success"`
@@ -20,6 +23,7 @@ type Config struct {
 
 	Greetings struct {
 		Enabled   bool   `json:"enabled"`
+		Title     string `json:"title"`
 		Message   string `json:"message"`
 		ChannelId string `json:"channelId"`
 	} `json:"greetings"`
@@ -33,6 +37,7 @@ type Config struct {
 	Levels struct {
 		Enabled      bool   `json:"enabled"`
 		ChannelId    string `json:"channelId"`
+		Title        string `json:"title"`
 		Message      string `json:"message"`
 		CoolDown     int    `json:"coolDown"`
 		MinXp        int    `json:"minXp"`
@@ -40,6 +45,23 @@ type Config struct {
 		BaseXp       int    `json:"baseXp"`
 		XpMultiplier int    `json:"xpMultiplier"`
 	} `json:"levels"`
+
+	Verification struct {
+		Enabled bool `json:"enabled"`
+		Embeds  struct {
+			Main struct {
+				Title   string `json:"title"`
+				Message string `json:"message"`
+			} `json:"main"`
+			Confirmation struct {
+				Title   string `json:"title"`
+				Message string `json:"message"`
+			} `json:"confirmation"`
+		} `json:"embeds"`
+		VerifiedText string   `json:"verifiedText"`
+		ChannelId    string   `json:"channelId"`
+		Roles        []string `json:"roles"`
+	} `json:"verification"`
 
 	ContentFiltering struct {
 		Enabled          bool     `json:"enabled"`
@@ -52,6 +74,13 @@ type Response struct {
 	Success bool    `json:"success"`
 	Message string  `json:"message,omitempty"`
 	Data    AnyData `json:"data,omitempty"`
+}
+
+type HCaptchaResponse struct {
+	Success     bool     `json:"success"`
+	ChallengeTs string   `json:"challenge_ts"`
+	Hostname    string   `json:"hostname"`
+	ErrorCodes  []string `json:"error-codes"`
 }
 
 type Member struct {

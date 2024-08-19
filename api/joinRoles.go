@@ -5,7 +5,6 @@ import (
 
 	"github.com/Thund3rD3v/SuperGuardian/structs"
 	"github.com/Thund3rD3v/SuperGuardian/utils"
-	"github.com/bwmarrin/discordgo"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -15,7 +14,7 @@ type EditJoinRolesBody struct {
 	Roles       []string `json:"roles"`
 }
 
-func JoinRolesRoute(session *discordgo.Session) fiber.Handler {
+func JoinRolesRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		config := utils.GetConfig()
 
@@ -30,7 +29,7 @@ func JoinRolesRoute(session *discordgo.Session) fiber.Handler {
 	}
 }
 
-func EditJoinRolesRoute(session *discordgo.Session) fiber.Handler {
+func EditJoinRolesRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		// Parse Json Body
 		var body EditJoinRolesBody

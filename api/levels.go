@@ -5,13 +5,13 @@ import (
 
 	"github.com/Thund3rD3v/SuperGuardian/structs"
 	"github.com/Thund3rD3v/SuperGuardian/utils"
-	"github.com/bwmarrin/discordgo"
 	"github.com/gofiber/fiber/v2"
 )
 
 type EditLevelsBody struct {
 	Enabled      bool   `json:"enabled"`
 	ChannelId    string `json:"channelId"`
+	Title        string `json:"title"`
 	Message      string `json:"message"`
 	CoolDown     int    `json:"coolDown"`
 	MinXp        int    `json:"minXp"`
@@ -20,7 +20,7 @@ type EditLevelsBody struct {
 	XpMultiplier int    `json:"xpMultiplier"`
 }
 
-func LevelsRoute(session *discordgo.Session) fiber.Handler {
+func LevelsRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		config := utils.GetConfig()
 
@@ -29,6 +29,7 @@ func LevelsRoute(session *discordgo.Session) fiber.Handler {
 			Data: structs.AnyData{
 				"enabled":      config.Levels.Enabled,
 				"channelId":    config.Levels.ChannelId,
+				"title":        config.Levels.Title,
 				"message":      config.Levels.Message,
 				"coolDown":     config.Levels.CoolDown,
 				"minXp":        config.Levels.MinXp,
@@ -40,7 +41,7 @@ func LevelsRoute(session *discordgo.Session) fiber.Handler {
 	}
 }
 
-func EditLevelsRoute(session *discordgo.Session) fiber.Handler {
+func EditLevelsRoute() fiber.Handler {
 	return func(ctx *fiber.Ctx) error {
 		// Parse Json Body
 		var body EditLevelsBody
@@ -57,6 +58,7 @@ func EditLevelsRoute(session *discordgo.Session) fiber.Handler {
 
 		config.Levels.Enabled = body.Enabled
 		config.Levels.ChannelId = body.ChannelId
+		config.Levels.Title = body.Title
 		config.Levels.Message = body.Message
 		config.Levels.CoolDown = body.CoolDown
 		config.Levels.MinXp = body.MinXp

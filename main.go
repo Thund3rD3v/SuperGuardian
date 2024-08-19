@@ -21,7 +21,7 @@ func main() {
 	}
 
 	// Generate Password
-	password := utils.GeneratePassword(64)
+	password := utils.GeneratePassword(12)
 
 	// Get Database
 	db := database.GetDB()
